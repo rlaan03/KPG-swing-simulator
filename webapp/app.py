@@ -228,7 +228,7 @@ def render_selected_plots():
     st.markdown("""
         <style>
         .scroll-area {
-            height: 750px;
+            height: 650px;
             overflow-y: auto;
             border-radius: 12px;
             border: 1.5px solid #333;
@@ -458,7 +458,7 @@ def draw_network(events, flash_id=None, size_base=9):
 
     fig.update_layout(
         template="plotly_white",
-        height=750,
+        height=650,
         margin=dict(l=0, r=0, t=0, b=0),
         showlegend=False
     )
@@ -484,7 +484,7 @@ with cols[0]:
     st.subheader("⚡ 한국 전력망 네트워크")
     fig = draw_network(st.session_state.events, flash_id=st.session_state.get("flash"))
     # 여기서 clicks 정의!
-    clicks = plotly_events(fig, click_event=True, hover_event=False, override_height=750, key="graph")
+    clicks = plotly_events(fig, click_event=True, hover_event=False, override_height=650, key="graph")
 
 
 
@@ -641,7 +641,7 @@ with cols[1]:
             slot_html = """
             <style>
               .scroll-area {
-                height: 750px;
+                height: 650px;
                 overflow-y: auto;
                 border-radius: 12px;
                 border: 1.5px solid #333;
@@ -676,7 +676,7 @@ with cols[1]:
                       </div>
                     """
             slot_html += "</div>"
-            components.html(slot_html, height=750)
+            components.html(slot_html, height=650)
 
 
 
