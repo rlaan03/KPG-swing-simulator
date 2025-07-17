@@ -426,9 +426,7 @@ def draw_network(events, flash_id=None, size_base=9):
         showticklabels=False,    # ← X축 숫자 숨김
     )
     fig.update_yaxes(
-        range=[34, 38.2],
-        scaleanchor="x",
-        scaleratio=1,
+        range=[34, 38.4],
         showticklabels=False,    # ← Y축 숫자 숨김
     )
     return fig
@@ -895,10 +893,6 @@ if st.session_state.sim_done and "sim_res" in st.session_state:
             coloraxis_colorbar=dict(title="Count")
         )
 
-        # 경도 범위 고정: 126~130
-        fig.update_xaxes(range=[126, 130])
-        # 위도 범위 고정: 34~38.2, x축 비율 유지
-        fig.update_yaxes(range=[34, 38.4])
 
 
         st.plotly_chart(fig_hd, use_container_width=True)
