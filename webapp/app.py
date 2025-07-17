@@ -294,7 +294,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-st.title("KPG-193 Swing Equation – Step-Disturbance Lab")
+st.title("Korean Power Grid Swing Equation – Step-Disturbance Simulator Lab")
 
 st.markdown("""
     <style>
