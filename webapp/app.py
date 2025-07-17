@@ -355,7 +355,7 @@ if st.session_state.events:
         hide_index=True,
         use_container_width=True,
         column_config={
-            "지명": st.column_config.TextColumn("지점/지명", width="medium"),
+            "지명": st.column_config.TextColumn("지점/지명", width="small"),
             "Bus":  st.column_config.NumberColumn("Bus", format="%d", width="small"),
         },
         height=110 + 32 * len(df_ev)
