@@ -5,3 +5,4 @@ plotly
 streamlit-plotly-events
 numpy
 scipy
+matplotlib
