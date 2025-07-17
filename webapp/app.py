@@ -339,8 +339,6 @@ if st.session_state.events:
         "t_step": "외란 시점",
         "ΔPm":    "출력 변화량"
     })
-    df_ev["index"] += 1
-    df_ev.rename(columns={"index": "#"}, inplace=True)
     # Bus 컬럼 타입이 float이면 int로 변환
     df_ev["Bus"] = df_ev["Bus"].apply(lambda x: int(x) if pd.notna(x) else x)
     # '지명' 컬럼 추가 (int 변환 실패 시 빈 문자열)
