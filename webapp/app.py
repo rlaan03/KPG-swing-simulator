@@ -507,6 +507,34 @@ with cols[1]:
 
     # 1) 아직 시뮬레이션을 안 돌렸으면 Read-Me 박스 출력
     if not st.session_state.sim_done:
+        # Quickstart 안내박스 렌더링 전에 한 번만 삽입
+        st.markdown("""
+        <style>
+        /* guide 전체의 기본 폰트 크기 */
+        .guide {
+            font-size: 14px !important;
+        }
+        
+        /* step-card 안 본문(p 태그) 크기 */
+        .guide .step-content p {
+            font-size: 13px !important;
+            line-height: 1.4 !important;
+        }
+        
+        /* step-number 원 내부 숫자 크기 */
+        .guide .step-number {
+            font-size: 12px !important;
+        }
+        
+        /* 헤더 텍스트(❔ Swing Simulator Quickstart) 크기 조정 */
+        .css-1v3fvcr {  /* Streamlit 서브헤더 클래스 이름은 버전에 따라 달라질 수 있습니다 */
+            font-size: 20px !important;
+        }
+        </style>
+        """, unsafe_allow_html=True)
+        
+
+        
         st.markdown(
             """
             <style>
