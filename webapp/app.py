@@ -333,18 +333,22 @@ if st.session_state.events:
     df_ev = (pd.DataFrame(st.session_state.events,
                           columns=["Bus", "t_step", "ΔPm"])
                 .reset_index())
-    df_ev = df_ev.rename(columns={
-    "t_step": "외란 시점",
-    "ΔPm":    "출력 변화량"
-    })
     df_ev["index"] += 1
     df_ev.rename(columns={"index": "#"}, inplace=True)
+
+    # 여기서 t_step, ΔPm 컬럼만 이름 변경
+    df_ev.rename(columns={
+        "t_step": "외란 시점",
+        "ΔPm":    "출력 변화량"
+    }, inplace=True)
+
     # Bus 컬럼 타입이 float이면 int로 변환
     df_ev["Bus"] = df_ev["Bus"].apply(lambda x: int(x) if pd.notna(x) else x)
-    # '지명' 컬럼 추가 (int 변환 실패 시 빈 문자열)
+    # '지명' 컬럼 추가
     df_ev["지명"] = df_ev["Bus"].map(lambda b: bus2name.get(b, "") if pd.notna(b) and b in bus2name else "")
-    # 순서: #, Bus, 지명, t_step, ΔPm
-    df_ev = df_ev[["#", "Bus", "지명", "t_step", "ΔPm"]]
+
+    # 순서: #, Bus, 지명, 외란 시점, 출력 변화량
+    df_ev = df_ev[["#", "Bus", "지명", "외란 시점", "출력 변화량"]]
 
     st.sidebar.dataframe(
         df_ev,
@@ -352,10 +356,11 @@ if st.session_state.events:
         use_container_width=True,
         column_config={
             "지명": st.column_config.TextColumn("지점/지명", width="medium"),
-            "Bus": st.column_config.NumberColumn("Bus", format="%d", width="small"),
+            "Bus":  st.column_config.NumberColumn("Bus", format="%d", width="small"),
         },
         height=110 + 32 * len(df_ev)
     )
+
 
 
 
