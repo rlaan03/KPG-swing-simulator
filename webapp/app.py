@@ -259,6 +259,17 @@ if "events" not in st.session_state:      # [(bus, t_step, ΔPm), …]
 if "selected_buses" not in st.session_state:
     st.session_state.selected_buses = []   # 4-slot용
 
+st.markdown("""
+<style>
+/* 모든 Expander 헤더 텍스트를 20px 로 키웁니다 */
+[data-testid="stExpander"] > div > div:first-child {
+    font-size: 20px !important;
+    font-weight: bold;
+}
+</style>
+""", unsafe_allow_html=True)
+
+
 
 # ────────────────── 페이지 설정 ──────────────────
 st.set_page_config(
