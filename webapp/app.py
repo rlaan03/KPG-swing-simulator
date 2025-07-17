@@ -261,8 +261,27 @@ if "selected_buses" not in st.session_state:
 
 
 # ────────────────── 페이지 설정 ──────────────────
-st.set_page_config(page_title="KPG-193 Swing Simulator", layout="wide")
-st.title("KPG-193 Swing Equation – Step-Disturbance Lab")
+st.set_page_config(
+    page_title="KPG-193 Swing Simulator",
+    layout="wide",
+    initial_sidebar_state="expanded",
+)
+
+st.markdown(
+    """
+    <style>
+      /* 사이드바가 펼쳐졌을 때 폭을 300px로 고정 */
+      [data-testid="stSidebar"][aria-expanded="true"] {
+        width: 300px;
+      }
+      /* 사이드바가 접혔을 때 폭을 80px로 고정 */
+      [data-testid="stSidebar"][aria-expanded="false"] {
+        width: 80px;
+      }
+    </style>
+    """,
+    unsafe_allow_html=True
+)st.title("KPG-193 Swing Equation – Step-Disturbance Lab")
 
 st.markdown("""
     <style>
@@ -310,8 +329,14 @@ if st.sidebar.button("Clear disturbances"):
 st.sidebar.subheader(f"Disturbances ({len(st.session_state.events)})")
 if st.session_state.events:
     df_ev = (pd.DataFrame(st.session_state.events,
-                          columns=["Bus", "t_step", "ΔPm"])
-                .reset_index())
+                          columns=["Bus","t_step","ΔPm"])
+                .reset_index(drop=True))
+    
+    # 열 이름 한글로 변경
+    df_ev = df_ev.rename(columns={
+        "t_step": "외란 시점",
+        "ΔPm":    "출력 변화량"
+    })
     df_ev["index"] += 1
     df_ev.rename(columns={"index": "#"}, inplace=True)
     # Bus 컬럼 타입이 float이면 int로 변환
@@ -326,8 +351,10 @@ if st.session_state.events:
         hide_index=True,
         use_container_width=True,
         column_config={
-            "지명": st.column_config.TextColumn("지점/지명", width="medium"),
-            "Bus": st.column_config.NumberColumn("Bus", format="%d", width="small"),
+            "Bus":        st.column_config.NumberColumn("Bus", width="small"),
+            "지점/지명":   st.column_config.TextColumn("지점/지명", width="medium"),
+            "외란 시점":   st.column_config.NumberColumn("외란 시점", width="small"),
+            "출력 변화량": st.column_config.NumberColumn("출력 변화량", width="small"),
         },
         height=110 + 32 * len(df_ev)
     )
