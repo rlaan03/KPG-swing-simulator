@@ -814,7 +814,7 @@ if st.session_state.sim_done and "sim_res" in st.session_state:
 
     # 1) 전체 네트워크 응답
     st.header("🌐 전체 네트워크 응답")
-    st.caption("모든 버스의 주파수 시계열을 한번에 확인합니다.")
+    st.caption("모든 노드의 주파수 응답을 한번에 확인합니다.")
     show_results(res)
 
     # 2) Node-level 지표 계산
@@ -847,25 +847,25 @@ if st.session_state.sim_done and "sim_res" in st.session_state:
     min_R  = float(np.min(R_ts))          # 최소 R(t)
 
     st.header("🔧 System-level Metrics")
-    st.caption("전력망의 외란에 대한 대표 지표를 요약합니다.")
+    st.caption("외란에 대응하는 전력망의 안정도 지표들을 요약합니다.")
     col_sys1, col_sys2 = st.columns(2)
     with col_sys1:
         st.metric("Average |Δf|", f"{avg_fd:.3e} Hz")
-        st.caption("전체 버스들의 주파수 편차-시간 평균")
+        st.caption("기준 동기화 주파수에 대한 전체 노드들의 주파수 편차-시간 평균")
     with col_sys2:
         st.metric("Minimum R(t)", f"{min_R:.4f}")
-        st.caption("동기화 Kuramoto 지표 R(t)의 최저값")
+        st.caption("동기화 Kuramoto Order Parameter R(t)의 최저값")
 
     st.markdown("---")  # 구분선
 
     # 5) Node-level Distributions
     st.header("📊 Node-level Distributions")
-    st.caption("외란을 받지 않은 발전기 노드들의 주요 지표 분포입니다.")
+    st.caption("외란을 받지 않은 노드들의 주요 지표 분포입니다.")
     col1, col2, col3 = st.columns(3)
 
     with col1:
         st.subheader("Frequency Nadir (mHz)")
-        st.caption("각 노드 주파수가 가장 낮게 떨어진 최저값 분포")
+        st.caption("각 노드의 최저 주파수 값 분포")
         fig_n = px.histogram(df_metrics, x="Nadir (mHz)", nbins=20)
         mean_n = df_metrics["Nadir (mHz)"].mean()
         fig_n.add_vline(
@@ -926,7 +926,7 @@ if st.session_state.sim_done and "sim_res" in st.session_state:
 
     with col1:
         st.subheader("📐 Electrical Distance Distribution")
-        st.caption("외란 노드로부터 다른 노드들의 전기적 거리 분포")
+        st.caption("외란 노드로부터 다른 노드들까지의 전기적 거리 분포")
         fig_d = px.histogram(
             df_dist,
             x="distance",
@@ -943,7 +943,7 @@ if st.session_state.sim_done and "sim_res" in st.session_state:
 
     with col2:
         st.subheader("📈 Disturbance Magnitude vs Electrical Distance")
-        st.caption("주파수 Nadir(mHz) ↔ 전기적 거리 2D 히스토그램")
+        st.caption("최저 주파수 Nadir(mHz) ↔ 전기적 거리 2D 히스토그램")
         fig_hd = px.density_heatmap(
             df_joint,
             x="distance",
