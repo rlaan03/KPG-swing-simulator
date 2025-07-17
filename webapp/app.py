@@ -294,7 +294,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-st.title("Korean Power Grid Swing Equation – Step-Disturbance Simulator Lab")
+st.title("Swing Equation – Step-Disturbance Simulator Lab")
 
 st.markdown("""
     <style>
@@ -481,7 +481,7 @@ def draw_network(events, flash_id=None, size_base=9):
 # ── 네트워크 & 상세 그래프를 좌·우 2-칼럼 배치 ───────────────────
 cols = st.columns([2,3])
 with cols[0]:
-    st.subheader("⚡ 한국 전력망 네트워크")
+    st.subheader("⚡ Korean Power Grid Network")
     fig = draw_network(st.session_state.events, flash_id=st.session_state.get("flash"))
     # 여기서 clicks 정의!
     clicks = plotly_events(fig, click_event=True, hover_event=False, override_height=650, key="graph")
