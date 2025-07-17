@@ -421,8 +421,8 @@ def draw_network(events, flash_id=None, size_base=9):
         showlegend=False
     )
     fig.update_yaxes(scaleanchor="x", scaleratio=1)
-    fig.update_xaxes(range=[125, 131])
-
+    fig.update_xaxes(range=[126, 130])
+    fig.update_yaxes(range=[34, 38.4])
     return fig
 
 
