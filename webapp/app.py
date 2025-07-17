@@ -491,9 +491,6 @@ with cols[1]:
                 padding: 12px 16px;
                 margin-bottom: 12px;
             }
-            .step-card:last-child {
-                margin-bottom: 0;
-            }
             .step-number {
                 flex: 0 0 32px;
                 height: 32px;
