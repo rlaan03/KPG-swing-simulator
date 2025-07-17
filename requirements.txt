@@ -1,4 +1,7 @@
-numpy
+streamlit
 pandas
+networkx
+plotly
+streamlit-plotly-events
+numpy
 scipy
-matplotlib
