@@ -523,6 +523,16 @@ with cols[1]:
 
             <div class="guide">
             <div class="step-card">
+                <div class="step-number">0</div>
+                <div class="step-content">
+                <strong>외란 시뮬레이터</strong>
+                <p>사용자는 노드를 지정하여 해당 노드의 출력을 임의로 조절함으로서 외란을 발생시킬 수 있습니다.</p><br>
+                <p>그 외란으로 인해 발생하는 주파수 동특성과 안정도 지표들이 페이지 하단에 출려됩니다.<p>
+                </div>
+            </div>
+            
+            <div class="guide">
+            <div class="step-card">
                 <div class="step-number">1</div>
                 <div class="step-content">
                 <strong>네트워크 노드 확인</strong>
