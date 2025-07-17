@@ -264,6 +264,28 @@ if "selected_buses" not in st.session_state:
 st.set_page_config(page_title="KPG-193 Swing Simulator", layout="wide")
 st.title("KPG-193 Swing Equation – Step-Disturbance Lab")
 
+st.markdown("""
+    <style>
+    /* 전체 padding 제거 */
+    .main .block-container {
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    /* 헤더 위쪽 여백 제거 */
+    header[data-testid="stHeader"] {
+        margin-top: -2rem;
+    }
+
+    /* 좌측 사이드바 폭 줄이기 */
+    section[data-testid="stSidebar"] {
+        width: 280px;
+    }
+    </style>
+""", unsafe_allow_html=True)
+
 
 # ── Sidebar 맨 위에 추가 ───────────────────────────────────
 if st.sidebar.button("🔄 Reset All"):
