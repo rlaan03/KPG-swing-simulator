@@ -281,7 +281,9 @@ st.markdown(
     </style>
     """,
     unsafe_allow_html=True
-)st.title("KPG-193 Swing Equation – Step-Disturbance Lab")
+)
+
+st.title("KPG-193 Swing Equation – Step-Disturbance Lab")
 
 st.markdown("""
     <style>
