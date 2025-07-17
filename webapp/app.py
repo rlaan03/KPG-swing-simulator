@@ -338,8 +338,8 @@ if st.session_state.events:
 
     # 여기서 t_step, ΔPm 컬럼만 이름 변경
     df_ev.rename(columns={
-        "t_step": "외란 시점(s)",
-        "ΔPm":    "출력 변화량(pu)"
+        "t_step": "외란 시점",
+        "ΔPm":    "출력 변화량"
     }, inplace=True)
 
     # Bus 컬럼 타입이 float이면 int로 변환
@@ -360,6 +360,7 @@ if st.session_state.events:
         },
         height=110 + 32 * len(df_ev)
     )
+
 
 
 
