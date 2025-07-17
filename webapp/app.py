@@ -319,12 +319,6 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 
-# ── Sidebar 맨 위에 추가 ───────────────────────────────────
-if st.sidebar.button("🔄 Reset All"):
-    for k in ("events", "flash"):
-        st.session_state.pop(k, None)   # 키가 없어도 무시
-    st.rerun()
-
 
 # ───────── 사이드바: 시뮬 파라미터 ─────────
 st.sidebar.header("Simulation Params")
