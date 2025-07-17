@@ -517,16 +517,6 @@ with cols[1]:
                 font-size: 0.95em;
             }
             </style>
-
-            <div class="guide">
-            <div class="step-card">
-                <div class="step-number">0</div>
-                <div class="step-content">
-                <strong>외란 시뮬레이터</strong>
-                <p>사용자는 노드를 지정하여 해당 노드의 출력을 임의로 조절함으로서 외란을 발생시킬 수 있습니다.</p><br>
-                <p>그 외란으로 인해 발생하는 주파수 동특성과 안정도 지표들이 페이지 하단에 출려됩니다.<p>
-                </div>
-            </div>
             
             <div class="guide">
             <div class="step-card">
@@ -541,7 +531,7 @@ with cols[1]:
                 <div class="step-number">2</div>
                 <div class="step-content">
                 <strong>외란 노드 선택</strong>
-                <p>파란색 노드 중에서 외란을 줄 노드를 클릭하세요. 웹페이지 하단에 해당 노드에 대한 외란 설정 창이 표시됩니다.</p>
+                <p>파란색 노드 중에서 외란을 줄 노드를 클릭하세요. 웹페이지 하단에 해당 노드에 대한 외란 설정 창이 표시됩니다.</p><br>
                 </div>
             </div>
 
