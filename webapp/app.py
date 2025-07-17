@@ -339,7 +339,7 @@ if st.session_state.events:
     # 여기서 t_step, ΔPm 컬럼만 이름 변경
     df_ev.rename(columns={
         "t_step": "외란 시점(s)",
-        "ΔPm":    "출력 변화량(pu)"
+        "ΔPm":    "출력 변화(pu)"
     }, inplace=True)
 
     # Bus 컬럼 타입이 float이면 int로 변환
@@ -348,7 +348,7 @@ if st.session_state.events:
     df_ev["지명"] = df_ev["Bus"].map(lambda b: bus2name.get(b, "") if pd.notna(b) and b in bus2name else "")
 
     # 순서: #, Bus, 지명, 외란 시점, 출력 변화량
-    df_ev = df_ev[["#", "Bus", "지명", "외란 시점(s)", "출력 변화량(pu)"]]
+    df_ev = df_ev[["#", "Bus", "지명", "외란 시점(s)", "출력 변화(pu)"]]
 
     st.sidebar.dataframe(
         df_ev,
