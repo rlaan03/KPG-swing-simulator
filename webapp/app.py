@@ -502,7 +502,7 @@ with cols[1]:
     elif not st.session_state.selected_buses:
         header_text = "🖱️ 발전기 노드 선택 대기 중"
     else:
-        header_text = "🎯 선택 노드 주파수 응답 (Δf)"
+        header_text = "🎯 개별 노드 주파수 응답 (Δf): 조사할 노드를 클릭하세요"
     st.subheader(header_text)
 
     # 1) 아직 시뮬레이션을 안 돌렸으면 Read-Me 박스 출력
