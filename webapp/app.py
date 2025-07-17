@@ -15,6 +15,15 @@ import numpy.linalg as la
 import plotly.express as px
 
 
+# webapp/app.py 상단, import 다음쯤에
+from simcore.step_disturbance import load_system
+
+if "gen_buses" not in st.session_state:
+    # load_system() 을 호출해서 41개 발전기 bus 리스트를 뽑아옵니다
+    _, _, _, _, _, gen41 = load_system()
+    st.session_state.gen_buses = set(gen41.tolist())
+
+
 if "sim_done" not in st.session_state:      # ← 새 줄
     st.session_state.sim_done = False
 
@@ -318,10 +327,6 @@ def draw_network(events, flash_id=None, size_base=9):
     """발전기 노드만 클릭 허용.
        flash_id: 직전 클릭 버스 → marker를 잠깐 키워 피드백"""
     # ─── 41-bus 발전기 집합 한 번만 구해 둠 ─────────────────────────
-    if "gen_buses" not in st.session_state:
-        from simcore.step_disturbance import load_system
-        _, _, _, _, _, gen41 = load_system()  # 41개 버스 번호
-        st.session_state.gen_buses = set(gen41.tolist())
     gen_set = st.session_state.gen_buses
     affected = {e[0] for e in events}
 
@@ -804,12 +809,6 @@ if st.session_state.sim_done and "sim_res" in st.session_state:
 
     # ────────── 6) Disturbance ↔ Distance & 2D Histogram ──────────
     # Sidebar에서 컬러맵 선택
-    hist_color = st.sidebar.selectbox(
-        "Histogram 컬러맵", 
-        ["Blues", "Teal", "OrRd", "PuBu", "Greens"], 
-        index=2
-    )
-    palette = getattr(px.colors.sequential, hist_color)  # e.g. px.colors.sequential.OrRd
     custom_color = "#61AFEF"
 
     heatmap_scale = st.sidebar.selectbox(
